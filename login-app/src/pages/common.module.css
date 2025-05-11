@@ -1,0 +1,94 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.publicCard {
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+    background: white;
+}
+
+.passwordInput {
+    height: 40px;
+}
+
+.passwordRules {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.passwordTitle {
+    text-align: left;
+}
+
+.passwordSubTitle {
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.ruleCheck {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.ruleText {
+    font-size: 14px;
+    color: gray;
+}
+
+.valid {
+    color: green;
+}
+
+.continueBtn {
+    margin-top: 20px;
+    height: 40px;
+    font-weight: bold;
+    background-color: #1677ff;
+    border-radius: 20px;
+    border: none;
+}
+
+.continueBtn:disabled {
+    background-color: #d3d3d3;
+}
+.inputSection {
+    text-align: left;
+    margin: 20px 0;
+  }
+  
+  .resendBtn {
+    margin-top: 15px;
+    height: 40px;
+    font-weight: bold;
+    background-color: #d3d3d3;
+    border-radius: 20px;
+    border: none;
+    color: gray;
+    cursor: default;
+  }
+  
+  .resendBtn:not(:disabled) {
+    background-color: #1677ff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .goBack {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #1677ff;
+    text-decoration: none;
+    text-align: center;
+  }

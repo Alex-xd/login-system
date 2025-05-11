@@ -1,0 +1,1 @@
+{"root":["./src/app.ts","./src/server.ts","./src/config/db.ts","./src/config/dotenv.ts","./src/config/passport.ts","./src/controllers/authcontroller.ts","./src/controllers/usercontroller.ts","./src/middlewares/authmiddleware.ts","./src/models/user.ts","./src/routes/authroutes.ts","./src/routes/userroutes.ts","./src/types/express.d.ts"],"errors":true,"version":"5.7.3"}

@@ -1,0 +1,64 @@
+services:
+  # Backend service
+  auth-system:
+    build: ./auth-system # Point to the directory containing the Dockerfile
+    ports:
+      - "5009:5009" # Host port: Container port
+    depends_on:
+      - mongodb # This service depends on the mongodb service
+      - redis # This service depends on the redis service
+    networks:
+      - app-network
+    volumes:
+      - ./auth-system:/app
+      - /app/node_modules
+      - ./auth-system/.env.docker:/app/.env
+    restart: unless-stopped # Restart the container when it stops
+
+  # Frontend service
+  login-app:
+    build: ./login-app # Point to the Dockerfile of the frontend project
+    ports:
+      - "5173:5173" # Vite default port
+    environment:
+      - VITE_API_URL=http://localhost:5009 # Point to the backend service
+    volumes:
+      - ./login-app:/app # Mount the local directory to the container
+      - /app/node_modules
+    networks:
+      - app-network
+    depends_on:
+      - auth-system
+    restart: unless-stopped
+
+  # MongoDB service
+  mongodb:
+    image: mongo:latest # Use the latest MongoDB image
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db # Data persistence
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Redis service
+  redis:
+    image: redis:latest # Use the latest Redis image
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data # Redis data
+    networks:
+      - app-network
+    restart: unless-stopped
+
+# Define network, all services in the same network can access each other
+networks:
+  app-network:
+    driver: bridge
+
+# Define persistent volume, save data
+volumes:
+  mongodb_data:
+  redis_data:
